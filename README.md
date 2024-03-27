@@ -27,7 +27,7 @@ export const env={
 
 To generate an OpenAI API KEY you must go to [OpenAI](https://platform.openai.com/api-keys) once you are inside, go to the API KEY section, and click on generate new secret key and assign a project name which you will identify and once finished copy the API KEY that the site provides you
 
-![Api generator screenshot](https://drive.google.com/file/d/1HvwzSuGhEdukrg9nwisdLwhd3j8yR11k/view?usp=sharing)
+![Api generator screenshot](https://github.com/EderGodinez/ChatBot/blob/main/src/github-assets\APIKEY.png)
 
 
 
@@ -35,7 +35,7 @@ To generate an OpenAI API KEY you must go to [OpenAI](https://platform.openai.co
 
 To get OpenAI ChatURL you must go to [OpenAI documentation](https://platform.openai.com/docs/api-reference/chat/create?lang=node.js) once you are inside, go to the Create chat completion section, and click on copy the APIURL of Endpoint POST.
 
-![POST endpoint URL](https://drive.google.com/file/d/1jCkeqDg-4jjkM_P3FhWS5zdinVrfLfzc/view?usp=sharing)
+![POST endpoint URL](https://github.com/EderGodinez/ChatBot/blob/main/src/github-assets\CHATURL.png)
 
 
 
