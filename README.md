@@ -1,6 +1,43 @@
 # ChatBotApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+## Authors
+
+- [@EderGodinez](https://github.com/EderGodinez)
+
+# Configurations
+
+### Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY`
+
+`ChatURL`
+
+Inside the `/src` folder create a folder called environments and create the file where the [OpenAI](https://openai.com/blog/openai-api) KEY APIs will be inside that created folder create a file called `environments.ts` where you will write the following configuration object.
+```typescript
+//environments.ts
+export const env={
+   API_KEY:"",
+   ChatURL:""
+}
+```
+### Set API_KEY
+
+To generate an OpenAI API KEY you must go to [OpenAI](https://platform.openai.com/api-keys) once you are inside, go to the API KEY section, and click on generate new secret key and assign a project name which you will identify and once finished copy the API KEY that the site provides you
+
+![Api generator screenshot](https://drive.google.com/file/d/1HvwzSuGhEdukrg9nwisdLwhd3j8yR11k/view?usp=sharing)
+
+
+
+### Set ChatURL
+
+To get OpenAI ChatURL you must go to [OpenAI documentation](https://platform.openai.com/docs/api-reference/chat/create?lang=node.js) once you are inside, go to the Create chat completion section, and click on copy the APIURL of Endpoint POST.
+
+![POST endpoint URL](https://drive.google.com/file/d/1jCkeqDg-4jjkM_P3FhWS5zdinVrfLfzc/view?usp=sharing)
+
+
 
 ## Development server
 
@@ -25,3 +62,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
