@@ -1,9 +1,8 @@
 export interface Message{
-  date: Date,
-    Message:string,
-    MessageOwner:MessageOwners
+    content:string,
+    role:MessageOwners
 }
-enum MessageOwners{
-  USER="User",
-  OPENAI="OpenAI"
+export enum MessageOwners{
+  USER="user",
+  OPENAI="system"
 }

@@ -1,13 +1,13 @@
 <div class="flex justify-center items-center bg-gray-900 w-screen h-screen">
-  <div class="w-10/12 bg-gray-100 flex flex-col justify-between p-5" id="chatArea" style="height: 90%;">
+  <div class="w-10/12 bg-gray-100 rounded-lg flex flex-col justify-between p-5" id="chatArea" style="height: 90%;">
     <div id="ChatHeader" class="flex flex-col items-center bg-slate-300 drop-shadow-2xl mb-4">
       <h1 class="block"><strong>ChatApp</strong></h1>
       <span>Aplicacion que utiliza el uso de API de OpenAI</span>
     </div>
-    <div id="messagesArea" class="grow overflow-auto ">
+    <div  #MessagesArea class="grow overflow-auto ">
       <ul>
         <li *ngFor="let message of Messages">
-          <message-card></message-card>
+          <message-card [MessageInfo]="message"></message-card>
         </li>
       </ul>
     </div>
@@ -20,11 +20,10 @@
                 <path fill-rule="evenodd" d="M3 5.983C3 4.888 3.895 4 5 4h14c1.105 0 2 .888 2 1.983v8.923a1.992 1.992 0 0 1-2 1.983h-6.6l-2.867 2.7c-.955.899-2.533.228-2.533-1.08v-1.62H5c-1.105 0-2-.888-2-1.983V5.983Zm5.706 3.809a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Zm2.585.002a1 1 0 1 1 .003 1.414 1 1 0 0 1-.003-1.414Zm5.415-.002a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Z" clip-rule="evenodd"/>
               </svg>
             </div>
-            <input type="search" formControlName="MessageContent" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ask something...." [ngClass]="IsValidMessage() ? 'border-red-600' : ''" />
+            <input  autocomplete="off" type="search" formControlName="MessageContent" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ask something...." [ngClass]="IsValidMessage() ? 'border-red-600' : ''" />
             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-<span class="">{{MessageForm.get('MessageContent')?.errors|json}}</span>

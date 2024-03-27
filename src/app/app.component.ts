@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Message } from './interfaces/Messages.interface';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Message, MessageOwners } from './interfaces/Messages.interface';
 import { OpenAiService } from './services/openIaService.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -14,18 +14,45 @@ export class AppComponent {
   public MessageForm:FormGroup=this.FB.group({
     MessageContent:["",[Validators.required]],
   })
+  @ViewChild('MessagesArea', { static: true }) messagesArea!: ElementRef;
+
+
   Messages:Message[]=[]
+  Isavailable:boolean=true;
   RequestMessage(){
     this.MessageForm.markAllAsTouched()
-    console.log(this.MessageForm)
-    if(this.MessageForm.valid){
-      return this.ChatService.getMessageFromOpenAi()
+    if(this.MessageForm.valid&&this.Isavailable){
+      this.Isavailable=false;
+      this.Messages.push({content:this.MessageForm.get('MessageContent')!.value,role:MessageOwners.USER})
+      this.Messages.push({content:"",role:MessageOwners.OPENAI})
+      this.ScrollEnd()
+      this.MessageForm.reset()
+      return this.ChatService.getMessageFromOpenAi(this.Messages).subscribe({
+        next:(value)=> {
+          this.Isavailable=true;
+          this.Messages[this.Messages.length-1].content=value.choices[0].message.content
+        },
+        error:(err)=> {
+          this.Isavailable=true;
+          console.error(err)
+        },
+        complete:()=> {
+          this.ScrollEnd()
+        },
+      })
     }
-    console.log('error')
     return
   }
   IsValidMessage():boolean|null{
     return this.MessageForm.controls['MessageContent'].errors &&
     this.MessageForm.controls['MessageContent'].touched;
+  }
+  ScrollEnd(){
+    if (this.messagesArea) {
+      this.messagesArea.nativeElement.scrollTo({
+        top: this.messagesArea.nativeElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }
 }

@@ -6,6 +6,7 @@ import { OpenAiService } from './services/openIaService.service';
 import { MessageCardComponent } from './components/message-card/message-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   { path: 'Chat', component: AppComponent },
   { path:'**',  redirectTo:'Chat'}
@@ -19,7 +20,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [OpenAiService],
   bootstrap: [AppComponent]

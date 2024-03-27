@@ -1,13 +1,21 @@
-<div class="flex justify-start mb-4" [ngClass]="messageOwner === 'User' ? '' : 'flex-row-reverse'">
+
+<div class="flex justify-start mb-4" [ngClass]="messageOwner === 'user' ? '' : 'flex-row-reverse'">
   <img
-    [src]="messageOwner === 'User' ? 'assets/user.jpg' : 'assets/openai.jpg'"
+    [src]="messageOwner === 'user' ? 'assets/user.jpg' : 'assets/openai.jpg'"
     class="object-cover h-8 w-8 rounded-full"
     alt=""
   />
-  <div class="ml-2 py-3 px-4  rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white" [ngClass]="messageOwner === 'User' ? 'bg-blue-600' : 'bg-gray-400'" >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-    at praesentium, aut ullam delectus odio error sit rem. Architecto
-    nulla doloribus laborum illo rem enim dolor odio saepe,
-    consequatur quas?
+  <div  *ngIf="message.length>0; else typing" class="ml-2 py-3 px-4  rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white" [ngClass]="messageOwner === 'user' ? 'bg-blue-600' : 'bg-gray-400'" >
+    <span [innerHTML]="message"></span>
   </div>
+  <ng-template #typing>
+    <div class="chat-bubble">
+      <div class="typing">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      </div>
+  </ng-template>
+
 </div>
