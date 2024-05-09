@@ -1,4 +1,4 @@
 export const env={
-  API_KEY:"sk-proj-hkvJc1a7x8oSgO1V994DT3BlbkFJBDYcxJt0ojgP5BXZniGf",
+  API_KEY:"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",
   ChatURL:"https://api.openai.com/v1/chat/completions"
 }
